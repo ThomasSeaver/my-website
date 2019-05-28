@@ -1,0 +1,17 @@
+.resume{
+    display:flex;
+    flex-direction: column;
+}
+
+.resume-row{
+    display:flex;
+    flex-direction:row;
+}
+
+.resume-left {
+    flex-basis: 30%;
+}
+
+.resume-right {
+    flex-basis: 70%;
+}
