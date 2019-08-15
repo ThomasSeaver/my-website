@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+--------------------------------------------------------------------------------------
+
+    Modified and maintained by Thomas Seaver as of August 2019
+    Hosted at thomasseaver.me
+    Code served at https://github.com/ThomasSeaver/my-website
+-->
+<html>
+	<head>
+		<title>Thomas Seaver | Arduino LED Controller</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Thomas Seaver</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="projects.html">Projects</a></li>
+								<li><a href="index.html#four">Resume</a></li>
+								<li><a href="#footer">Contact me</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Arduino LED Controller</h2>
+								<p>Controller for an ESP8266 (cheap wifi chipped Arduino) that's hooked up to individually addressable RGB LEDs. (WS2812Bs)</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Why do this?</h3>
+									<p>Normal lighting is boring. Mood lighting, lighting that automatically changes colors, and the ability to control it from any networked device drastically changes the atmosphere of a room as well as how smart you feel your home is. Unfortunately, most custom RGB lighting solutions are either prohibitively expensive, or garbage. The ones that require internet are either sending your data through whichever nationstates they want, or just putting insecure backdoors in your network. Sometimes both. </p>
+									<p>What's the solution, I hear you ask. My friend it is the magic of Arduino and RGB lights. If you don't know what an Arduino is, I'd suggest you go to the links below, but a short explanation is that it is a tiny computer that has accessible pins which makes it easy to control sensors or other devices which a bigger computer would have trouble interfacing with or utilizing.</p>
+									<p>In my setup, we use ESP8266s, AKA NodeMCUs. Beyond the names and setting the appropriate system in your IDE, this doesn't matter much. I chose them because they're about 5 bucks a pop on Amazon, and have wifi enabled. This is important because it means that as long as I'm on the same network, I can ping that device with requests for lighting, and it can respond automatically.</p>
+									<p>You simply run 5v power to a strip of LEDs (I use WS2812Bs, aka Neopixel knock offs. It doesn't matter what kind you use as long as you mark it in the code) and then run the data line on the strip to pin 6 on the arduino, which you must also run 5v power to. Originally I was running 5v power to the arduino, then sapping it for the lights across the board. This I do not recommend, as it worked for a bit than killed a chip, twice. I believe it's the amperage draw of the lights that's too much for the power regulator on the Arduino, but I'm not an electrician.</p>
+									<p>After power has been run, the arduino is on, and you've set your network and what not correctly in the code, it should be connected. Either use the ip you set, or find it yourself, then begin pinging it with the various url encoded parameters I note in documentaiton to use it. This may not seem to be the best way to control it, but it's the simplest way I've found to give info to the Arduino through HTTP, and allows for other systems to control it through http requests.</p>
+									<p>That was important to me because I setup a Python server that could run on my computer automatically with Node.js, and be accessible from any device. It was a much nicer and easier way to present an HTML page than directly from the arduino while still being able to control it however I wanted. It also presents the option for further development to control multiple strips at once.</p>
+									<p>This was not the easiest process, but altogether for 30ish bucks you can have your own remotely controllable rgb led strip without having to send your data outside your network, and I think that's pretty neat. I'm pretty happy with it and looking forward to trying more Arduino stuff in the future.</p>
+									<p>Also note the documentation for utilizing it directly through serial, if you're interested. I don't like it, and I'm looking for other options, but my college's network is so specific and difficult to work with that this is a much simpler option while still utilizing the wifi chips for when I move back out to my own network space.</p>
+									<h3 class="major">Source Code - Important Links - Documentation</h3>
+									<a href="https://www.arduino.cc/en/guide/introduction">Arduino website/documentation</a>
+
+								</div>
+							</div>
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<h3>Email</h3>
+						<p>tseaver6@gatech.edu</p>
+						<h3>Phone</h3>
+						<p>404-992-9458</p>
+						<ul class="icons">
+							<li><a href="https://github.com/ThomasSeaver" class="icon style2 fa-github"><span class="label">Github</span></a></li>
+							<li><a href="https://www.linkedin.com/in/thomas-seaver-59331112b/" class="icon style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="mailto: tseaver6@gatech.edu" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="https://www.hackerrank.com/tseaver6" class="icon style2"><i class="fab fa-hackerrank"></i><span class="label">HackerRank</span></a></li>
+							<li><a href="#" class="icon style2 fa-youtube"><span class="label">Youtube</span></a></li>
+						</ul>
+						<p>© Thomas Seaver 2019 - Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</div>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
